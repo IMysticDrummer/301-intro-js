@@ -61,9 +61,6 @@ class League{
 class FootballLeague extends League {
   constructor(name, teams, config) {
     super(name, teams, config)
-    this.pointsPerWin=pointsPerWin
-    this.pointsPerDraw=pointsPerDraw
-    this.pointsPerLose=pointsPerLose
   }
 
   //Reescribimos el setup de configuración para que sea más específica del tipo de liga de football
@@ -78,7 +75,8 @@ class FootballLeague extends League {
     this.config=Object.assign(defaultConfig,config)
   }
 
-  customizeTeam(teamName){
+  customizeTeam(teamName){ //Este método es llamado desde el constructor. Al llamar al padre, ejecuta el
+                            //el customizeTeam, pero como el scope es el de FootballLeague, ejecuta este
     const teamObj=super.customizeTeam(teamName)
 
     return {
